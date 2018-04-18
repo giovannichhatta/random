@@ -1,7 +1,6 @@
 require 'net/http'
 require 'uri'
 
-#@url 			= URI.parse("http://10.10.10.73/login.php")
 @url 			= URI.parse("http://127.0.0.1:1212/bsqli.php")
 #@url 			= URI.parse("http://127.0.0.1:1313/login.php")
 #@url 			= URI.parse("http://192.168.1.34:81/bsqli.php")
