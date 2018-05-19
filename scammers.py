@@ -17,6 +17,7 @@ def post(url,email,passwd):
     }
     try:
         req = requests.post(url,data=data,timeout=10)
+        print("%s %s : %s" % (email, passwd, req.status_code))
     except:
         print("Host is offline :)") 
         sys.exit()
