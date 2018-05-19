@@ -26,6 +26,6 @@ while True:
     email = gen()
     password = gen()[:-16]
     post(url,email,password)
-    time.sleep(0.2)
+    time.sleep(0.1)
     
     
