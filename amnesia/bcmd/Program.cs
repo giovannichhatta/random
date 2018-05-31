@@ -22,7 +22,6 @@ namespace bcmd
         {   
             while (true)
             {
-                command = "";
                 titleName();
                 menu();
 
