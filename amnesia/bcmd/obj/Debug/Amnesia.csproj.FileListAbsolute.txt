@@ -1,0 +1,7 @@
+D:\VisualStudioProjects\bcmd\bcmd\bin\Debug\Amnesia.exe.config
+D:\VisualStudioProjects\bcmd\bcmd\bin\Debug\Amnesia.exe
+D:\VisualStudioProjects\bcmd\bcmd\bin\Debug\Amnesia.pdb
+D:\VisualStudioProjects\bcmd\bcmd\obj\Debug\Amnesia.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\bcmd\bcmd\obj\Debug\Amnesia.exe
+D:\VisualStudioProjects\bcmd\bcmd\obj\Debug\Amnesia.pdb
+D:\VisualStudioProjects\bcmd\bcmd\obj\Debug\Amnesia.csprojResolveAssemblyReference.cache
