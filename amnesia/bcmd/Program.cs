@@ -1,4 +1,4 @@
-﻿/*
+/*
  * 16-02-2018
  */
 using System;
@@ -22,7 +22,6 @@ namespace bcmd
         {   
             while (true)
             {
-                command = "";
                 titleName();
                 menu();
 
@@ -146,3 +145,4 @@ namespace bcmd
 
     }
 }
+
