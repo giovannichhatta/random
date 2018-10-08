@@ -23,5 +23,7 @@ $('span[unselectable="on"]').each(function(a,b){
 
 for(var i = 0; i<= text.length; i++){
 	addText(text[i]);
-	await sleep(105);
+	await sleep(69);
 }
+console.clear();
+console.log('done');
