@@ -45,7 +45,7 @@ while(true){
 		text += b.innerHTML;
 	});
 
-	for(var i = 0; i<= text.length; i++){
+	for(var i = 0; i < text.length; i++){
 		addText(text[i]);
 		await sleep(120);
 	}
