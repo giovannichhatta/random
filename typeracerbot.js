@@ -24,9 +24,10 @@ async function addText(character){
 	$(inputField).val($(inputField).val() + character);
 }
 
-var turns = 0;
+var turns = 1;
 
 while(true){
+	console.clear();
 	console.log('Round: ' + turns)
 	console.log('let\'s get this bread');
 
@@ -43,7 +44,7 @@ while(true){
 
 	for(var i = 0; i<= text.length; i++){
 		addText(text[i]);
-		await sleep(69);
+		await sleep(120);
 	}
 
 	console.log('Done');
