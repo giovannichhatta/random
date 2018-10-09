@@ -28,7 +28,11 @@ var turns = 1;
 
 while(true){
 	console.clear();
-	console.log('Round: ' + turns)
+	console.log('Round: ' + turns);
+
+	while(document.getElementsByClassName('lightLabel')[0]){
+	 await sleep(1200);
+	}
 	console.log('let\'s get this bread');
 
 	Import();
@@ -52,10 +56,12 @@ while(true){
 	while($('.gameStatusLabel').html() != "The race has ended." && $('.gameStatusLabel').html().substr(0,12) != "You finished"){
 		await sleep(1000);
 	}
+	
 	console.log('Race voorbij');
 	console.log('Nieuwe race starten..');
 	removePop();
 	document.getElementsByClassName('raceAgainLink')[0].click();
 	turns++;
-	await sleep(20000);
+	
+	await sleep(5000);
 }
