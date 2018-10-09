@@ -24,9 +24,10 @@ async function addText(character){
 	$(inputField).val($(inputField).val() + character);
 }
 
+var turns = 0;
 
 while(true){
-	console.log('let\'s get this bread');
+	console.log('let\'s get this bread for the ' + turns + 'time');
 
 	Import();
 
@@ -53,6 +54,6 @@ while(true){
 	console.log('Nieuwe race starten..');
 	removePop();
 	document.getElementsByClassName('raceAgainLink')[0].click();
-
+	turns++;
 	await sleep(20000);
 }
