@@ -26,6 +26,9 @@ async function addText(character){
 
 var turns = 1;
 
+Import();
+await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
+
 while(true){
 	console.clear();
 	console.log('Round: ' + turns);
@@ -34,10 +37,6 @@ while(true){
 	 await sleep(1200);
 	}
 	console.log('let\'s get this bread');
-
-	Import();
-
-	await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
 	
 	var text = "";
 	var inputField = $('.txtInput');
