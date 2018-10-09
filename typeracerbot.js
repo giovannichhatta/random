@@ -27,7 +27,8 @@ async function addText(character){
 var turns = 0;
 
 while(true){
-	console.log('let\'s get this bread for the ' + turns + 'time');
+	console.log('Round: ' + turns)
+	console.log('let\'s get this bread');
 
 	Import();
 
