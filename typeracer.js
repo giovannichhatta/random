@@ -45,7 +45,7 @@ while(true){
 
 	console.log('Done');
 
-	while($('.gameStatusLabel').html() != "The race has ended." && $('.gameStatusLabel').html() != "You finished 1st!"){
+	while($('.gameStatusLabel').html() != "The race has ended." && $('.gameStatusLabel').html().substr(0,12) != "You finished"){
 		await sleep(1000);
 	}
 	console.log('Race voorbij');
