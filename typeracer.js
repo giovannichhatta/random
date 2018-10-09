@@ -1,29 +1,57 @@
-// Import Jquery
-var script = document.createElement('script');
-var src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
-script.src = src;
-document.body.append(script);
+function Import(){
+	// Import Jquery
+	var script = document.createElement('script');
+	var src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+	script.src = src;
+	document.body.append(script);
+}
+
+async function removePop(){
+	await sleep(1000);
+	try{
+		document.getElementsByClassName('xButton')[0].click();
+	}catch(a){
+		console.log('Login popup did not appear');
+	}
+}
 
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
-
-var text = "";
-var inputField = $('.txtInput');
-
 async function addText(character){
 	$(inputField).val($(inputField).val() + character);
 }
 
-$('span[unselectable="on"]').each(function(a,b){
-	text += b.innerHTML;
-});
 
-for(var i = 0; i<= text.length; i++){
-	addText(text[i]);
-	await sleep(69);
+while(true){
+	console.log('let\'s get this bread');
+
+	Import();
+
+	await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
+	
+	var text = "";
+	var inputField = $('.txtInput');
+
+	$('span[unselectable="on"]').each(function(a,b){
+		text += b.innerHTML;
+	});
+
+	for(var i = 0; i<= text.length; i++){
+		addText(text[i]);
+		await sleep(69);
+	}
+
+	console.log('Done');
+
+	while($('.gameStatusLabel').html() != "The race has ended." && $('.gameStatusLabel').html() != "You finished 1st!"){
+		await sleep(1000);
+	}
+	console.log('Race voorbij');
+	console.log('Nieuwe race starten..');
+	removePop();
+	document.getElementsByClassName('raceAgainLink')[0].click();
+
+	await sleep(20000);
 }
-console.clear();
-console.log('done');
