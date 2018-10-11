@@ -26,12 +26,26 @@ async function addText(character){
 
 var turns = 1;
 
+var rank = {
+	'first'  : 0,
+	'second' : 0,
+	'third'  : 0,
+	'fourth' : 0,
+	'fifth'  : 0
+};
+
 Import();
 await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
 
 while(true){
 	console.clear();
 	console.log('Round: ' + turns);
+	console.log("-".repeat(10));
+	console.log("\nResults:\n");
+
+	for( i in rank) {
+ 		console.log(i + " : " + rank[i]);
+	}
 
 	while(document.getElementsByClassName('lightLabel')[0]){
 	 await sleep(1200);
@@ -56,6 +70,31 @@ while(true){
 		await sleep(1000);
 	}
 	
+	switch($('.gameStatusLabel').html().substr(13,1)){
+		case "1":
+			rank.first++;
+			break;
+		case "2":
+			rank.second++;
+			break;
+		case "3":
+			rank.third++;
+			break;
+		case "4":
+			rank.fourth++;
+			break;
+		case "5":
+			rank.fifth++;
+			break;
+		default:
+			console.log("Er ging iets met het opslaan van je rank..");
+	}
+
+	if($('.challengePrompt').html()){
+		console.log("O shit..");
+		break;
+	}
+
 	console.log('Race voorbij');
 	console.log('Nieuwe race starten..');
 	removePop();
