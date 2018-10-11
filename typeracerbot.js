@@ -44,7 +44,7 @@ while(true){
 	console.log("\nResults:\n");
 
 	for( i in rank) {
- 		console.log(i + " : " + rank[i]);
+ 		console.log(i + "\t: " + rank[i]);
 	}
 
 	while(document.getElementsByClassName('lightLabel')[0]){
