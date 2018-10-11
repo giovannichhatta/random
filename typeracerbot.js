@@ -34,6 +34,12 @@ var rank = {
 	'fifth'  : 0
 };
 
+function getRank(){
+	for( i in rank) {
+ 		console.log(i + "\t: " + rank[i]);
+	}
+}
+
 Import();
 await sleep(1000); // Wacht een seconde totdat Jquery is ingeladen
 
@@ -43,9 +49,7 @@ while(true){
 	console.log("-".repeat(10));
 	console.log("\nResults:\n");
 
-	for( i in rank) {
- 		console.log(i + "\t: " + rank[i]);
-	}
+	getRank()
 
 	while(document.getElementsByClassName('lightLabel')[0]){
 	 await sleep(1200);
@@ -91,7 +95,10 @@ while(true){
 	}
 
 	if($('.challengePrompt').html()){
-		console.log("O shit..");
+		console.clear()
+		console.log("Game over");
+		console.log("-".repeat(10)+"\n");
+		getRank();
 		break;
 	}
 
