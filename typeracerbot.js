@@ -65,7 +65,7 @@ while(true){
 
 	for(var i = 0; i < text.length; i++){
 		addText(text[i]);
-		await sleep(120);
+		await sleep(120); //Change to increase/decrease speed
 	}
 
 	console.log('Done');
