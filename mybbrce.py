@@ -1,3 +1,5 @@
+## MyBB < 1.8.2 Authenticated RCE 
+## Made by Giovanni Chhatta
 import requests
 from bs4 import BeautifulSoup
 
